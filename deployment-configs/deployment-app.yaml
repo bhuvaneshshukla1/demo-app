@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: demo-container
-          image: gcr.io/project-curiosity-428718/demo:latest
+          image: gcr.io/project-curiosity-428718/demo-app-image:latest
           ports:
             - containerPort: 8080
