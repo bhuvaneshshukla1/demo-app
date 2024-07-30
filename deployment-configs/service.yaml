@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: demo-service
+  namespace: dev-cluster
 spec:
   type: LoadBalancer
   selector:
