@@ -16,15 +16,17 @@ spec:
         app: jenkins
     spec:
       securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
+        runAsUser: 0  # Run as root
+        runAsGroup: 0
+        fsGroup: 0
       containers:
         - name: jenkins
-          image: jenkins/jenkins:lts
+          image: gcr.io/project-curiosity-428718/custom-jenkins:latest
           ports:
             - containerPort: 8080
             - containerPort: 50000
+          securityContext:
+            privileged: true  # Allow privileged mode
           volumeMounts:
             - name: jenkins-home
               mountPath: /var/jenkins_home
