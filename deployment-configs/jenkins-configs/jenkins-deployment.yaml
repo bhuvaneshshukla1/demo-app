@@ -31,6 +31,15 @@ spec:
             - name: gcr-key
               mountPath: /var/secrets/google
               readOnly: true
+            - name: docker-socket
+              mountPath: /var/run/docker.sock
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "500m"
+            limits:
+              memory: "4Gi"
+              cpu: "1"
       volumes:
         - name: jenkins-home
           persistentVolumeClaim:
@@ -38,3 +47,6 @@ spec:
         - name: gcr-key
           secret:
             secretName: gcr-json-key
+        - name: docker-socket
+          hostPath:
+            path: /var/run/docker.sock
